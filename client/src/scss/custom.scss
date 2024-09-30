@@ -1,0 +1,13 @@
+$primary: #ebc15d;
+$nav-active: #ebc15d;
+$black: #111111;
+$btn-black: #393938;
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/variables';
+@import './responsive.scss';
+@import './color.scss';
+
+.fs-7 {
+  font-size: 0.9rem;
+}

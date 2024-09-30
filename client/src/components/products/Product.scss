@@ -1,0 +1,5 @@
+.product-img {
+  &:hover {
+    filter: blur(0.5);
+  }
+}

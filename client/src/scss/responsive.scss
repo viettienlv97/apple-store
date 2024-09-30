@@ -1,0 +1,43 @@
+// responsive-height.scss
+
+// Định nghĩa map các phần trăm
+$percentages: (
+  100: 100%,
+  75: 75%,
+  50: 50%,
+  25: 25%,
+);
+
+// Định nghĩa các breakpoints
+$breakpoints: (
+  'xxl': 1400px,
+  'xl': 1200px,
+  'lg': 992px,
+  'md': 768px,
+  'sm': 576px,
+);
+
+// Mixin để tạo lớp chiều cao
+@mixin generate-height-classes($percentage, $value, $breakpoint: null) {
+  // Sử dụng giá trị phần trăm trực tiếp từ map
+  @if $breakpoint == null {
+    .h-#{$percentage} {
+      height: $value !important;
+    }
+  } @else {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      .h-#{$breakpoint}-#{$percentage} {
+        height: $value !important;
+      }
+    }
+  }
+}
+
+// Sử dụng mixin để tạo các lớp
+@each $percentage, $value in $percentages {
+  @include generate-height-classes($percentage, $value);
+
+  @each $breakpoint, $breakpointValue in $breakpoints {
+    @include generate-height-classes($percentage, $value, $breakpoint);
+  }
+}
