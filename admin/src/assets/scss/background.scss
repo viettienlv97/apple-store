@@ -1,0 +1,14 @@
+
+@mixin bg-colors($bg-colors) {
+  @each $name, $value in $bg-colors {
+    .bg-#{$name} {
+      background-color: $value !important;
+    }
+  }
+};
+$bg-colors: (
+  'yellow': $yellow,
+  'green': $green,
+  'sky': $sky
+);
+@include bg-colors($bg-colors);

@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react'
 import Detail from './Detail'
 import Description from './Description'
-import useGetProducts from '../../hooks/useGetProducts'
 import RelatedProduct from './RelatedProduct'
-import { Product } from '../../store/interface'
+import { Product } from '../../zustand/productStore.ts'
+import useProductStore from '../../zustand/productStore.ts'
 
 const imgs = ['img1', 'img2', 'img3', 'img4']
 
@@ -12,15 +12,13 @@ type Props = {
 }
 
 const ProductDetail: FC<Props> = ({ productId }) => {
-  const { products, loading } = useGetProducts()
+  const { product, products, getProduct, clearProduct, loading } = useProductStore()
+
   const [selectedImg, setSelectedImg] = useState<string | undefined>('')
-  const [product, setProduct] = useState<Product | undefined>(undefined)
   const [relatedProducts, setRelatedProducts] = useState<Array<Product>>([])
 
   useEffect(() => {
-    if (products) {
-      setProduct(products.find((prod) => prod._id.$oid === productId))
-    }
+
     if (product) {
       setRelatedProducts(
         products.filter(
@@ -31,7 +29,11 @@ const ProductDetail: FC<Props> = ({ productId }) => {
       )
       setSelectedImg(product.img1)
     }
-  }, [product, products, productId])
+
+    return () => {
+      // clearProduct()
+    }
+  }, [product, productId])
 
   return (
     <section id='product-detail'>

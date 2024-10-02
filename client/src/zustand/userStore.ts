@@ -21,14 +21,13 @@ type UserState = {
 }
 
 const useUserStore = create<UserState>((set) => ({
-  user: JSON.parse(localStorage.getItem('userInfo') ?? '') || null,
+  user: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')!) : null,
   loading: false,
   error: null,
   login: async (user) => {
     try {
       set({ loading: true, error: null })
       const data = await ClientSDK.getInstance().login(user) as {data: User}
-      
       set({ user: data.data, loading: false })
       useAuthStore.getState().login('')
       localStorage.setItem('userInfo', JSON.stringify(data.data))

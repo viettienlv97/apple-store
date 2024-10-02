@@ -1,0 +1,28 @@
+{
+  "name": "admin-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3001",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "feather-icons": "^4.29.2",
+    "primeicons": "^7.0.0",
+    "scss": "^0.2.4",
+    "vite-svg-loader": "^5.1.0",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "sass": "^1.79.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-svg-loader": "^5.1.0",
+    "vue-tsc": "^2.0.21"
+  }
+}

@@ -12,10 +12,11 @@ import { config } from 'dotenv'
 import mongoose from 'mongoose'
 
 import userRoute from './routes/user.route.ts'
+import productRoute from './routes/product.route.ts'
 import chalk from 'chalk'
 
 config()
-const app = express()
+const app: Application = express()
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(cors())
@@ -34,6 +35,7 @@ app.use(
 )
 
 app.use('/api/auth', userRoute)
+app.use('/api/products', productRoute)
 
 app.use((_, res: Response) => {
   res.status(404).send('Page not found')
@@ -45,7 +47,7 @@ mongoose
     app.listen(process.env.PORT, () => {
       console.log(`
 ${chalk.bold.blue('Server is running')}
-http://localhost:${chalk.bold.blueBright(process.env.PORT)}/      
+http://localhost:${chalk.bold.blueBright(process.env.PORT)}/
 `)
     })
   })

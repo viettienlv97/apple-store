@@ -1,17 +1,19 @@
 import { FC } from 'react'
-import { Product as ProductType } from '../../../store/interface'
+import { Product as ProductType } from '../../../zustand/productStore.ts'
 import Product from '../../products/Product'
 import { useNavigate } from 'react-router-dom'
 
 type Props = {
-  list: Array<ProductType>
+  list: ProductType[]
 }
 
 const List: FC<Props> = ({ list }) => {
   const navigate = useNavigate()
 
   const handleNavigateToProduct = (product: ProductType) => {
-    const productId = product._id.$oid
+    console.log('product', product);
+    
+    const productId = product._id
     navigate(`/detail/${productId}`)
   }
 

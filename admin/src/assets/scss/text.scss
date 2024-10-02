@@ -1,0 +1,35 @@
+@mixin text-colors($colors) {
+  @each $colorName, $color-value in $colors {
+    .text-#{$colorName} {
+      color: $color-value !important;
+    }
+  }
+}
+
+$colors: (
+  'purple': $purple,
+  'green': $green,
+  'gray': $gray-600,
+  'dark': $gray-700,
+  'fade': $fade
+);
+
+@include text-colors($colors);
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
+@mixin font-weights($weight) {
+  @each $name, $value in $weights {
+    .fw-#{$name} {
+      font-weight: $value !important;
+    }
+  }
+}
+$weights: (
+  '400': 400,
+  '500': 500,
+  '600': 600
+);
+@include font-weights($weights);

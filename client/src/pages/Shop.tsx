@@ -6,7 +6,6 @@ const ShopPage = () => {
     <main>
       <BannerShop
         title={'SHOP'}
-        subtitle={null}
       />
       <ProductsList />
     </main>

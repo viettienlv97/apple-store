@@ -3,15 +3,17 @@ import Categories from '../categories/Categories'
 import SearchProduct from './search/SearchProduct'
 import FilterProduct from './filter/FilterProduct'
 import List from './filtered/List'
-import useGetProducts from '../../hooks/useGetProducts'
+import useProductStore from '../../zustand/productStore'
 
 const ProductsList = () => {
-  const { products, loading } = useGetProducts()
+  const {products, getProducts, loading } = useProductStore()
   const [category, setCategory] = useState<string>('')
 
   useEffect(() => {
     if (products && products.length > 0) {
       setCategory('all')
+    } else {
+      getProducts()
     }
   }, [products])
 
@@ -23,7 +25,7 @@ const ProductsList = () => {
     if (!products || products.length < 1) return []
     if (category === 'all') return products
 
-    const filter = products.filter((item) => item.category === category)
+    const filter = products.filter((item) => item && item.category === category)
     return filter
   }
 

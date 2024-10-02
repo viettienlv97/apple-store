@@ -5,7 +5,7 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
         derivedCtor.prototype,
         name,
         Object.getOwnPropertyDescriptor(baseCtor.prototype, name)
-      );
-    });
-  });
+      )
+    })
+  })
 }

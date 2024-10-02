@@ -1,0 +1,21 @@
+$primary: #0071c2;
+$secondary: #003580;
+$purple: #7452f8;
+$green: #008009;
+$sky: #ebf3ff;
+$fade: #d4d4d4;
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/variables';
+@import './background.scss';
+@import './padding.scss';
+@import './text.scss';
+@import './column.scss';
+
+// .bg-dark-blue {
+//   background-color: $dark-blue !important;
+// }
+
+.border-none {
+  border: none;
+}

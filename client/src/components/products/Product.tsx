@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { formattedPrice } from '../../utils/helper'
-import { Product as ProductType } from '../../store/interface'
-
+import { Product as ProductType } from '../../zustand/productStore.ts'
 type ProductProps = {
   product: ProductType
   className: string
